@@ -16,8 +16,7 @@ public class ExpressionsService {
     }
 
     public Expressions getExpression(String conversionType) {
-        return (Expressions) expressionsRepository.findById(conversionType).orElse(null);
-//        return (Expressions) expressionsRepository.findByConversionType(conversionType).orElse(null);
+        return expressionsRepository.findById(conversionType).orElse(null);
     }
 
 }
