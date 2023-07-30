@@ -9,7 +9,6 @@ public class Expressions {
     private String formula;
     private Double minimumValueAllowed;
     private Double maximumValueAllowed;
-    private String conversionDescription;
     private String inputUnit;
     private String outputUnit;
     public String getFormula() {
@@ -35,7 +34,6 @@ public class Expressions {
                 ", formula='" + formula + '\'' +
                 ", minimumValueAllowed=" + minimumValueAllowed +
                 ", maximumValueAllowed=" + maximumValueAllowed +
-                ", conversionDescription='" + conversionDescription + '\'' +
                 ", inputUnit='" + inputUnit + '\'' +
                 ", outputUnit='" + outputUnit + '\'' +
                 '}';
