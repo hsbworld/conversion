@@ -31,6 +31,8 @@ The conversion configurations are stored in the database table `EXPRESSIONS`, wh
 - `input_unit`: Defines the unit of the input temperature.
 - `output_unit`: Defines the unit of the output temperature after conversion.
 
+**Note:** Data upload script is included in resources folder and loads the data on startup
+
 ## API Documentation
 
 ### URL: `api/convert/{conversion_type}/{value}`
