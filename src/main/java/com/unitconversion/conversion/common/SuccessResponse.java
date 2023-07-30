@@ -7,9 +7,6 @@ public class SuccessResponse {
     private final String outputValue;
     private final String outputUnit;
 
-//    private String conversionDescription;
-
-
     public SuccessResponse(String inputValue, String inputUnit, String outputValue, String outputUnit) {
         this.inputValue = inputValue;
         this.inputUnit = inputUnit;

@@ -32,7 +32,6 @@ public class ExpressionsService {
 
     public SuccessResponse performConversion(Expressions expression, Object value){
 
-//      Expressions expression;
         String formula;
         Map<String, Object> variable = new HashMap<>();
 
