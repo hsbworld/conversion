@@ -9,7 +9,7 @@ This Spring Boot application empowers users to seamlessly convert temperatures b
 ### Via Source Code
 
 1. Clone the project from the GitHub repository.
-2. Ensure that Java and Maven are installed on your system.
+2. Ensure that Java (version 17) and Maven (version 3.8) are installed on your system.
 3. Build the project using Maven: `mvn clean install`
 4. Run the application using Maven: `mvn spring-boot:run`
 5. Access the application at: [http://localhost:8080](http://localhost:8080)
