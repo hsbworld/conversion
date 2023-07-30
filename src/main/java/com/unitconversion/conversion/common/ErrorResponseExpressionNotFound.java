@@ -1,13 +1,12 @@
-package com.unitconversion.conversion.customexceptions;
+package com.unitconversion.conversion.common;
 
-public class ExpressionNotFoundException extends RuntimeException{
+public class ErrorResponseExpressionNotFound {
 
     private final String errorCode;
 
     private final String errorMessage;
 
-    public ExpressionNotFoundException(String errorCode, String errorMessage) {
-        super(errorMessage);
+    public ErrorResponseExpressionNotFound(String errorCode, String errorMessage) {
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }

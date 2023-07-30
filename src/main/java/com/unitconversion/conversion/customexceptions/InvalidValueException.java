@@ -1,6 +1,6 @@
-package com.unitconversion.conversion.common;
+package com.unitconversion.conversion.customexceptions;
 
-public class ErrorResponse {
+public class InvalidValueException extends RuntimeException{
 
     private final String errorCode;
 
@@ -10,7 +10,8 @@ public class ErrorResponse {
 
     private final String outputUnit;
 
-    public ErrorResponse(String errorCode, String errorMessage, String inputUnit, String outputUnit) {
+    public InvalidValueException(String errorCode, String errorMessage, String inputUnit, String outputUnit) {
+        super(errorMessage);
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
         this.inputUnit = inputUnit;

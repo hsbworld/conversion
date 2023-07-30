@@ -2,10 +2,11 @@ package com.unitconversion.conversion.controller;
 
 import com.unitconversion.conversion.common.SuccessResponse;
 import com.unitconversion.conversion.common.Validations;
-import com.unitconversion.conversion.customexceptions.ExpressionNotFoundException;
 import com.unitconversion.conversion.entities.Expressions;
 import com.unitconversion.conversion.service.ExpressionsService;
 import com.unitconversion.conversion.service.UnitsConversionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,8 @@ public class controller {
 
     private final ExpressionsService expressionsService;
 
+    private static final Logger logger = LoggerFactory.getLogger(controller.class);
+
     @Autowired
     public controller(UnitsConversionService unitsConversionService, ExpressionsService expressionsService) {
         this.unitsConversionService = unitsConversionService;
@@ -32,22 +35,18 @@ public class controller {
     public ResponseEntity<Object> convert(@PathVariable String conversionType, @PathVariable Object value){
 
         Expressions expression;
-        String formula;
-        Map<String, Object> variable = new HashMap<>();
+        SuccessResponse response;
 
-        Validations.validateInput(value);
+        logger.debug("Entering convert method with value={}", value);
 
-        expression = expressionsService.getExpression(conversionType);
+//      Get expression from H2 DB
+        expression = expressionsService.getExpression(conversionType.toUpperCase());
 
-        if (expression == null){
-            throw new ExpressionNotFoundException("Expression with conversion type " + conversionType + " not found");
-        }
+        Validations.validateInput(value, expression, conversionType);
 
-        formula = expression.getExpression();
-        variable.put("input", value);
+        response = expressionsService.performConversion(expression, value);
+        logger.debug("Exiting convertToCelsius method with result={}", response.getOutputValue());
 
-        Object result = unitsConversionService.evaluateExpression(formula, variable);
-        SuccessResponse response = new SuccessResponse(result.toString());
         return new ResponseEntity<>(response, HttpStatus.OK);
 
     }

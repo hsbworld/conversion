@@ -1,31 +1,43 @@
 package com.unitconversion.conversion.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
 @Entity
 public class Expressions {
-
     @Id
-    @Column(name="CONVERSION_TYPE")
     private String conversionType;
-
-    private String expression;
-
-    public String getConversionType() {
-        return conversionType;
+    private String formula;
+    private Double minimumValueAllowed;
+    private Double maximumValueAllowed;
+    private String conversionDescription;
+    private String inputUnit;
+    private String outputUnit;
+    public String getFormula() {
+        return formula;
     }
-
-    public String getExpression() {
-        return expression;
+    public Double getMinimumValueAllowed() {
+        return minimumValueAllowed;
+    }
+    public Double getMaximumValueAllowed() {
+        return maximumValueAllowed;
+    }
+    public String getInputUnit() {
+        return inputUnit;
+    }
+    public String getOutputUnit() {
+        return outputUnit;
     }
 
     @Override
     public String toString() {
         return "Expressions{" +
                 "conversionType='" + conversionType + '\'' +
-                ", expression='" + expression + '\'' +
+                ", formula='" + formula + '\'' +
+                ", minimumValueAllowed=" + minimumValueAllowed +
+                ", maximumValueAllowed=" + maximumValueAllowed +
+                ", conversionDescription='" + conversionDescription + '\'' +
+                ", inputUnit='" + inputUnit + '\'' +
+                ", outputUnit='" + outputUnit + '\'' +
                 '}';
     }
 }
